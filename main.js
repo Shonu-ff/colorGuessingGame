@@ -6,5 +6,18 @@ var colorDisplay = document.getElementById("colorDisplay");
 colorDisplay.innerHTML = pickedColor;
 
 for (var i = 0; i < squares.length; i++) {
+  //add initial colors to squares
   squares[i].style.background = color[i];
+
+  //add click listeners to squares
+  squares[i].addEventListener("click", function () {
+    //grab color of clicked square
+    var clickedColor = this.style.background;
+    //compare color to pickedColor
+    if(clickedColor === pickedColor){
+      alert("Correct!");
+    } else {
+      alert("Wrong!");
+    }
+  });
 }
