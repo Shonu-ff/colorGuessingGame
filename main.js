@@ -1,13 +1,14 @@
-var color = ["rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 255, 255)", "rgb(0, 0, 255)", "rgb(255, 0, 255)"];
+var colors = ["rgb(255, 0, 0)", "rgb(255, 255, 0)", "rgb(0, 255, 0)", "rgb(0, 255, 255)", "rgb(0, 0, 255)", "rgb(255, 0, 255)"];
 var squares = document.querySelectorAll(".square");
-var pickedColor = color[3];
+var pickedColor = pickColor();
 var colorDisplay = document.getElementById("colorDisplay");
+var messageDisplay = document.getElementById("message");
 
 colorDisplay.innerHTML = pickedColor;
 
 for (var i = 0; i < squares.length; i++) {
   //add initial colors to squares
-  squares[i].style.background = color[i];
+  squares[i].style.background = colors[i];
 
   //add click listeners to squares
   squares[i].addEventListener("click", function () {
@@ -15,9 +16,24 @@ for (var i = 0; i < squares.length; i++) {
     var clickedColor = this.style.background;
     //compare color to pickedColor
     if(clickedColor === pickedColor){
-      alert("Correct!");
+      messageDisplay.innerHTML = "CORRECT";
+      changeColors(clickedColor);
     } else {
-      alert("Wrong!");
+      this.style.background = "#232323";
+      messageDisplay.innerHTML = "Try Again"
     }
   });
+}
+
+function changeColors(color) {
+  //loop through all squares
+  for(var i = 0; i < squares.length; i++) {
+  //change each color to match given color
+    squares[i].style.background = color;
+  }
+}
+
+function pickColor() {
+  var random = Math.floor(Math.random() * colors.length);
+  return colors[random];
 }
