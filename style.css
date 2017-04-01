@@ -1,7 +1,7 @@
 body{
   background-color: #232323;
 }
-h1, span {
+h1 {
   color: white;
 }
 
@@ -16,4 +16,9 @@ h1, span {
   padding-bottom: 30%;
   float: left;
   margin: 1.66%;
+}
+#stripe {
+  background: white;
+  height: 30px;
+  text-align: center;
 }
